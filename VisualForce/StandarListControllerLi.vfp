@@ -9,6 +9,6 @@
                     <apex:outputText value="{!a.name}"/>
                 </apex:outputLink>
             </li>
-        </apex:repeat>   
+        </apex:repeat>
     </apex:pageBlock>
 </apex:page>
