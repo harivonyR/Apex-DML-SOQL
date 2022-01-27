@@ -1,0 +1,14 @@
+// https://trailhead.salesforce.com/fr/content/learn/modules/visualforce_fundamentals/visualforce_standard_list_controllers?trail_id=force_com_dev_beginner
+<apex:page standardController="Account" recordSetVar="accounts">
+    <apex:pageBlock> 
+        <apex:repeat value="{!accounts}" var="a">
+            // iterate intruction for each account elements konw as "a"
+            <li>
+                // link
+                <apex:outputLink value="/{!a.ID}">
+                    <apex:outputText value="{!a.name}"/>
+                </apex:outputLink>
+            </li>
+        </apex:repeat>   
+    </apex:pageBlock>
+</apex:page>
