@@ -1,0 +1,20 @@
+/************
+    Create and upload .zip static ressource 
+    Create zipped static resources to group together related files that are usually updated together.
+    When your static assets are a set of related items—for example, a set of application icons, or a complex JavaScript library—it’s best to create a zipped static resource. Create a zip file containing all of the elements you want to group together, and upload only the one zip file to Lightning Platform.
+
+    1 - UPLOAD STATIC ASSET :
+        Setup > static assets > new > upload zip file as public
+        name the ressource
+        save
+    
+    2 - CALL RESSOURCE IN visualForce
+        <apex:image value="{!URLFOR($Resource.CatImage,'cats/kitten1.jpg')}"/>
+
+**************/
+
+<apex:page showHeader="false" sidebar="false">
+    <apex:image value="{!
+                       URLFOR($Resource.CatImage,'cats/kitten1.jpg')
+                       }"/>
+</apex:page>
