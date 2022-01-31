@@ -1,0 +1,33 @@
+// https://trailhead.salesforce.com/fr/content/learn/modules/lex_dev_lc_basics/lex_dev_lc_basics_attributes_expressions
+
+// Créer un component message avec un attribut de type String
+/* helloMessage.cmp */
+<aura:component>
+    <aura:attribute name="message" type="String"/>
+    <p>{!'Hello! ' + v.message}</p>
+</aura:component>
+
+/* Passer un String un component */
+<aura:component>
+    <aura:attribute name="customMessage" type="String"/>
+    <p> <c:helloMessage message="{!v.customMessage}"/> </p>
+</aura:component>
+
+/* utiliser un objet avancée avec aura component */
+<aura:component>
+    <aura:attribute name="expense" type="Expense__c"/>
+    <p>Amount:
+        <lightning:formattedNumber value="{!v.expense.Amount__c}" style="currency"/>
+    </p>
+    <p>
+        Client: {!v.expense.Client__c}
+    </p>
+    <p>
+        /*Lightning input */
+        <lightning:input type="toggle"
+                         label="Reimbursed?"
+                         name="reimbursed"
+                         checked="{!v.expense.Reimbursed__c}" />
+     </p>
+    <!-- Other markup here -->
+</aura:component>

@@ -1,0 +1,36 @@
+// link : https://trailhead.salesforce.com/fr/content/learn/modules/lex_dev_lc_basics/lex_dev_lc_basics_controllers
+
+// handleClick button
+// compingListing.cmp
+<aura:component >
+	<aura:attribute name="item" type="Camping_Item__c" required="true" default="{Name:smith,Price__c:30
+                                                                                ,Quatity__c:30,Packed__c:true}"/>
+    <lightning:formattedText title="Name Item" value="{!v.item.Name}" />
+    <lightning:formattedNumber value="{!v.item.Price__c}" style="currency"/>
+    <lightning:formattedNumber value="{!v.item.Quantity__c}" style="currency"/>
+    <lightning:input type="toggle" label="Packed__c" name="input2" checked="{!v.item.Packed__c}"/>
+    
+    //c.packItem is the handleClick event
+    <lightning:button label="Packed!" onclick="{!c.packItem}"/>
+
+</aura:component>
+
+// integrer le controller dans c.
+// packingItemListController.js
+
+({
+	packItem : function(component, event, helper) {
+		// find the actual component
+        var a = component.get(v.item);
+        // set the value as true
+        a.Packed__c = true;
+        
+        // set the new value of the component
+        component.set("v.item",a);
+        
+        // get the clicked button
+        var btn1 = event.getsource();
+        // set disabled to true
+        document.getElementById(btn1.id).disabled=true;
+	}
+})

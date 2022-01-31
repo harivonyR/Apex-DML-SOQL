@@ -1,0 +1,22 @@
+/* 
+URL : https://trailhead.salesforce.com/fr/content/learn/modules/lex_dev_lc_basics/lex_dev_lc_basics_attributes_expressions
+
+Définir des attributs de vos composants, et passer les valeurs d’attributs à des composants imbriqués.
+Comprendre la différence entre une définition de composant et une instance de composant, et créer plusieurs instances d’un composant.
+Créer des expressions basiques pour afficher des valeurs variables et calculées.
+Créer des expressions conditionnelles pour une sortie dynamique.
+
+    Set attribute for componnent
+    <aura:attribute name="message" type="String"/>
+
+*/
+
+<aura:component >
+	<aura:attribute name="item" type="Camping_Item__c" required="true" default="{Name:smith,Price__c:30
+                                                                                ,Quatity__c:30,Packed__c:true}"/>
+    <lightning:formattedText title="Name Item" value="{!v.item.Name}" />
+    <lightning:formattedNumber value="{!v.item.Price__c}" style="currency"/>
+    <lightning:formattedNumber value="{!v.item.Quantity__c}" style="currency"/>
+    <lightning:input type="toggle" label="Packed__c" name="input2" checked="{!v.item.Packed__c}"/>
+    
+</aura:component>
