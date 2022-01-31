@@ -1,0 +1,44 @@
+    <!-- CREATE NEW EXPENSE -->
+    <div aria-labelledby="newexpenseform">
+        <!-- BOXED AREA -->
+        <fieldset class="slds-box slds-theme_default slds-container_small">
+        <legend id="newexpenseform" class="slds-text-heading_small
+          slds-p-vertical_medium">
+          Add Expense
+        </legend>
+        <!-- CREATE NEW EXPENSE FORM -->
+        <form class="slds-form_stacked">
+            <lightning:input aura:id="expenseform" label="Expense Name"
+                             name="expensename"
+                             value="{!v.newExpense.Name}"
+                             required="true"/>
+            <lightning:input type="number" aura:id="expenseform" label="Amount"
+                             name="expenseamount"
+                             min="0.1"
+                             formatter="currency"
+                             step="0.01"
+                             value="{!v.newExpense.Amount__c}"
+                             messageWhenRangeUnderflow="Enter an amount that's at least $0.10."/>
+            <lightning:input aura:id="expenseform" label="Client"
+                             name="expenseclient"
+                             value="{!v.newExpense.Client__c}"
+                             placeholder="ABC Co."/>
+            <lightning:input type="date" aura:id="expenseform" label="Expense Date"
+                             name="expensedate"
+                             value="{!v.newExpense.Date__c}"/>
+            <lightning:input type="checkbox" aura:id="expenseform" label="Reimbursed?"
+                             name="expreimbursed"
+                             checked="{!v.newExpense.Reimbursed__c}"/>
+            <lightning:button label="Create Expense"
+                              class="slds-m-top_medium"
+                              variant="brand"
+                              onclick="{!c.clickCreate}"/>
+        </form>
+        <!-- / CREATE NEW EXPENSE FORM -->
+      </fieldset>
+      <!-- / BOXED AREA -->
+    </div>
+    <!-- / CREATE NEW EXPENSE -->
+
+    // Tutorial : https://trailhead.salesforce.com/fr/content/learn/modules/lex_dev_lc_basics/lex_dev_lc_basics_forms
+    // !! URL : https://github.com/Mulodo-Salesforce-Training/trailhead-salesforce-challenge/blob/master/LightningComponentForm.md
