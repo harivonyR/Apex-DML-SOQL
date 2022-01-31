@@ -6,7 +6,7 @@
           slds-p-vertical_medium">
           Add Expense
         </legend>
-        <!-- CREATE NEW EXPENSE This changed too with uc-twf -->
+        <!-- CREATE NEW EXPENSE This changed too with the last change -->
         <form class="slds-form_stacked">
             <lightning:input aura:id="expenseform" label="Expense Name"
                              name="expensename"
