@@ -1,0 +1,50 @@
+1 - CREATION D'UN CONTROLLER APEX PERSONNALISE
+    dev console > Apex class
+    
+        public class ContactsListWithController {
+            // Controller code goes here
+                        private String sortOrder = 'LastName';
+            public List<Contact> getContacts() {
+                List<Contact> results = Database.query(
+                    'SELECT Id, FirstName, LastName, Title, Email ' +
+                    'FROM Contact ' +
+                    'ORDER BY ' + sortOrder + ' ASC ' +
+                    'LIMIT 10'
+                );
+                return results;
+            }
+        }
+
+2 - USE CUSTOM CONTROLER
+    <apex:page controller="ContactsListWithController" recordSetVar="accounts">
+        <apex:form>
+            <apex:pageBlock title="Contacts List" id="contacts_list">
+                <!-- Contacts List goes here -->
+                <apex:pageBlockTable value="{! contacts }" var="ct">
+                <apex:column value="{! ct.FirstName }"/>
+                <apex:column value="{! ct.LastName }"/>
+                <apex:column value="{! ct.Title }"/>
+                <apex:column value="{! ct.Email }"/>
+            </apex:pageBlockTable>
+            </apex:pageBlock>
+        </apex:form>
+    </apex:page>
+
+
+    3 - PRACTICE 
+    select only record with status equal to "New"
+
+    <apex:page controller="NewCaseListController" showHeader="false">
+        <apex:repeat value="{!newCases}" var="case" id="theRepeat">
+            <apex:outputLink value="/!{case.id}">{!case.id}</apex:outputLink>  
+        </apex:repeat>
+    </apex:page>
+
+    CustomController
+    -------------------------------
+    public class NewCaseListController {
+        public List<Case> getNewCases(){
+            List<Case> lst = [Select CaseNumber from Case where status='New'];
+            return lst;
+        }
+    }
